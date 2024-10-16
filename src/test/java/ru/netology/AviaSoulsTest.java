@@ -58,6 +58,50 @@ public class AviaSoulsTest {
         Assertions.assertArrayEquals(expected,actual);
     }
 
+    @Test
+    public void searchOneTestTicketPrice() {
+        AviaSouls tickets = new AviaSouls();
+        Ticket ticket1 = new Ticket("SPB", "IST", 100, 10, 14);
+        Ticket ticket2 = new Ticket("SPB", "IST", 200, 12, 17);
+        Ticket ticket3 = new Ticket("SPB", "IST", 100, 16, 22);
+        Ticket ticket4 = new Ticket("SPB", "IST", 500, 9, 12);
+        Ticket ticket5 = new Ticket("SPB", "IST", 300, 7, 10);
+        Ticket ticket6 = new Ticket("SPB", "MSK", 300, 7, 10);
+
+        tickets.add(ticket1);
+        tickets.add(ticket2);
+        tickets.add(ticket3);
+        tickets.add(ticket4);
+        tickets.add(ticket5);
+        tickets.add(ticket6);
+
+        Ticket[] actual = tickets.search("SPB", "MSK");
+        Ticket[] expected = {ticket6};
+        Assertions.assertArrayEquals(expected,actual);
+    }
+
+    @Test
+    public void searchZeroTestTicketPrice() {
+        AviaSouls tickets = new AviaSouls();
+        Ticket ticket1 = new Ticket("SPB", "IST", 100, 10, 14);
+        Ticket ticket2 = new Ticket("SPB", "IST", 200, 12, 17);
+        Ticket ticket3 = new Ticket("SPB", "IST", 100, 16, 22);
+        Ticket ticket4 = new Ticket("SPB", "IST", 500, 9, 12);
+        Ticket ticket5 = new Ticket("SPB", "IST", 300, 7, 10);
+        Ticket ticket6 = new Ticket("SPB", "MSK", 300, 7, 10);
+
+        tickets.add(ticket1);
+        tickets.add(ticket2);
+        tickets.add(ticket3);
+        tickets.add(ticket4);
+        tickets.add(ticket5);
+        tickets.add(ticket6);
+
+        Ticket[] actual = tickets.search("IST", "MSK");
+        Ticket[] expected = {};
+        Assertions.assertArrayEquals(expected,actual);
+    }
+
 
     @Test
     public void searchAndSortByTest() {
